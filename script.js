@@ -1,16 +1,47 @@
 const form = document.querySelector("#form");
-const tablo = document.querySelector("#tablo");
-const txt = document.querySelector("#txt");
+const btn = document.querySelector("#btn");
+const input = document.querySelector("#input");
+const todolist = document.querySelector("#todolist");
+let i = 0;
 
-//comment empecher le rechargement de la page quand on valide un formulaire
+// Empecher le rechargement de la plage
 form.onsubmit = (e) => {
   e.preventDefault();
-  alert("ma page ne se rafraichit pas");
+};
+todolist.style = "display:none";
 
-  //ajouter le texte de mon input dans mon tableau
+btn.addEventListener("click", () => {
+  todolist.style = "display:block";
   const tr = document.createElement("tr");
   const td = document.createElement("td");
-  td.textContent = txt.value;
+  const btnTd = document.createElement("button");
+  const finish = document.createTextNode("Terminer");
+  const btnTd2 = document.createElement("button");
+  const del = document.createTextNode("Supprimer");
+  const btnTd3 = document.createElement("button");
+  const edit = document.createTextNode("Modifier");
+  td.textContent = input.value;
   tr.appendChild(td);
-  document.querySelector("#tablo").appendChild(tr);
-};
+  document.querySelector("#todolist").appendChild(tr);
+  btnTd.appendChild(finish);
+  btnTd2.appendChild(del);
+  btnTd3.appendChild(edit);
+  tr.appendChild(btnTd);
+  tr.appendChild(btnTd2);
+  tr.appendChild(btnTd3);
+  btnTd.addEventListener("click", () => {
+    td.style = "text-decoration:line-through";
+    i++;
+    if (i % 2 === 0) {
+      td.style = "text-decoration:none";
+    }
+  });
+  btnTd2.addEventListener("click", () => {
+    tr.remove();
+  });
+  btnTd3.addEventListener("click", () => {
+    const change = document.createElement("input");
+    tr.append(change);
+    td.remove();
+  });
+});
