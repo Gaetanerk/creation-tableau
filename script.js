@@ -14,6 +14,7 @@ btn.addEventListener("click", () => {
   todolist.style = "display:block";
   const tr = document.createElement("tr");
   const td = document.createElement("td");
+  const td2 = document.createElement("td2");
   const btnTd = document.createElement("button");
   const finish = document.createTextNode("Terminer");
   const btnTd2 = document.createElement("button");
@@ -22,6 +23,7 @@ btn.addEventListener("click", () => {
   const edit = document.createTextNode("Modifier");
   td.textContent = input.value;
   tr.appendChild(td);
+  tr.appendChild(td2);
   document.querySelector("#todolist").appendChild(tr);
   btnTd.appendChild(finish);
   btnTd2.appendChild(del);
@@ -41,7 +43,12 @@ btn.addEventListener("click", () => {
   });
   btnTd3.addEventListener("click", () => {
     const change = document.createElement("input");
-    td.remove();
-    tr.appendChild(change);
+    td.textContent = "";
+    td.appendChild(change);
+    td2.appendChild(btnTd);
+    td2.appendChild(btnTd2);
+    td2.appendChild(btnTd3);
+    tr.appendChild(td);
+    tr.appendChild(td2);
   });
 });
