@@ -41,7 +41,7 @@ btn.addEventListener("click", () => {
   });
   btnTd3.addEventListener("click", () => {
     const change = document.createElement("input");
-    tr.append(change);
     td.remove();
+    tr.appendChild(change);
   });
 });
